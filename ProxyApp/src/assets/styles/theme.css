@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* --- Bảng màu chuẩn GPA VKU --- */
+    --primary: #0ea5e9;       /* Sky Blue */
+    --primary-dark: #0284c7;  /* Darker Blue */
+    --bg: #f8fafc;            /* Background xám rất nhạt */
+    --surface: #ffffff;       /* Trắng tinh */
+    --border: #e2e8f0;        /* Viền xám nhạt */
+    --text: #334155;          /* Text chính */
+    --text-light: #64748b;    /* Text phụ */
+    --danger: #ef4444;
+    --success: #22c55e;
+    
+    /* --- Các biến cấu hình khác --- */
+    --radius: 10px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.03);
+    --transition: all 0.2s ease-in-out;
+}
+
+/* =========================================
+   1. GLOBAL RESET & VUETIFY OVERRIDES
+   ========================================= */
+body, .v-application {
+    font-family: 'Inter', sans-serif !important;
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+    font-size: 13.5px !important;
+}
+
+/* Reset thẻ A */
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: var(--transition);
+}
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Override Vuetify Input (Làm phẳng, bỏ bóng) */
+.v-field__outline {
+    --v-field-border-color: var(--border) !important;
+}
+.v-field--focused .v-field__outline {
+    --v-field-border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary);
+}
+.v-field {
+    border-radius: 6px !important;
+    background-color: var(--surface) !important;
+}
+
+/* =========================================
+   2. AUTH PAGE STYLES (Login/Register)
+   ========================================= */
+
+/* Container chính căn giữa màn hình */
+.auth-container {
+    min-height: 100vh;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+}
+
+/* Card Login: Phẳng, viền mỏng, bo góc */
+.auth-card {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow-sm) !important;
+    padding: 32px !important;
+    width: 100%;
+    max-width: 380px;
+    transition: var(--transition);
+}
+
+/* .auth-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+    transform: translateY(-2px);
+} */
+
+/* Header khu vực Logo/Title */
+.auth-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth-header .v-icon {
+    background: #e0f2fe; /* Nền icon xanh nhạt */
+    padding: 24px;
+    border-radius: 50%;
+    color: var(--primary) !important;
+    margin-bottom: 12px;
+}
+
+.auth-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 8px 0 4px;
+}
+
+.auth-subtitle {
+    font-size: 13.5px;
+    color: var(--text-light);
+}
+
+/* Form Inputs */
+.auth-form {
+    margin-bottom: 24px;
+}
+
+.auth-input {
+    margin-bottom: 16px;
+}
+
+/* Button Submit: Phẳng, màu Primary */
+.auth-button {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    height: 44px !important;
+    border-radius: 6px !important;
+    text-transform: none !important; /* Chữ thường, không viết hoa hết */
+    font-weight: 600 !important;
+    letter-spacing: normal !important;
+    box-shadow: none !important;
+    border: 1px solid var(--primary) !important;
+    font-size: 14px !important;
+}
+
+.auth-button:hover {
+    background: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+/* Footer link (New here?) */
+.auth-footer {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--text-light);
+}
+
+.auth-link {
+    font-weight: 600;
+    color: var(--primary);
+    margin-left: 4px;
+}
+/* --- TABLE STYLES (Admin/Proxy Config) --- */
+
+/* 1. Action Buttons: Khắc phục lỗi xếp dọc */
+.action-buttons {
+    display: flex;
+    gap: 4px;           /* Khoảng cách giữa các icon */
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap; /* Ngăn xuống dòng */
+}
+
+/* 2. Text Gradient cho Header (Giống code mẫu) */
+.gradient-text {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #424242, #1E88E5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 4px;
+}
+
+/* 3. IP Port Cell (Hiệu ứng hover xanh) */
+.ip-port-cell {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Consolas', monospace;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: all 0.2s;
+}
+.ip-port-cell:hover {
+    color: #1877f2 !important; /* Facebook Blue */
+}
+
+/* 4. Table Layout */
+.proxy-table .v-table__wrapper {
+    border-radius: 0 0 12px 12px;
+}
+.proxy-table th, .proxy-table td {
+    white-space: nowrap !important; /* Ngăn text bị xuống dòng */
+}
+
+/* 5. Nút Gradient (Create Proxies) */
+.gradient-btn {
+    background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%) !important;
+    color: white !important;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.gradient-btn:hover {
+    filter: brightness(95%);
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3) !important;
+}
+
+/* 6. Side Panel */
+.side-panel-bg {
+    background: #f5f7fa;
+    border-right: 1px solid #e0e0e0;
+    min-height: 100%;
+}
+/* Footer cố định dưới đáy (Giống code GPA) */
+.page-footer {
+    position: absolute;
+    bottom: 20px;
+    background: #f1f5f9;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+}
+.page-footer a {
+    font-weight: 600;
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 600px) {
+    .auth-card {
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+    }
+    .auth-container {
+        justify-content: flex-start;
+        padding-top: 60px;
+    }
+}
